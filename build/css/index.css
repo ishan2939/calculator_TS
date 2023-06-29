@@ -1,0 +1,184 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    user-select: none;
+}
+
+body{
+    background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+/* main container */
+.calculator{
+    width: 25%;
+    min-width: 450px;
+    margin: 20px;
+    padding: 15px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: rgb(100, 100, 111) 0px 7px 29px 0px;
+}
+/* input field */
+.calculator .input{
+    width: 100%;
+    padding: 10px;
+    text-align: end;
+    font-size: 45px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    background-color: #333;
+    color: #fff;
+}
+
+.calculator .input::placeholder{
+    color: rgb(179, 177, 177);
+}
+/* operations bar */
+.operations1, .operations2, .operations3, .operations4{
+    display: grid;
+    gap: 2px 2px;
+}
+/* container for individual operation elements */
+.itemof1, .itemof2, .itemof3, .itemof4, .itemof3 .submenu .subitem{
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    padding: 15px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+sup{
+    font-size: 10px;
+    margin-left: 2px;
+}
+
+.operations1{
+    grid-template-columns: 90px 90px;
+    margin-bottom: 2px;
+}
+
+.operations2{
+    grid-template-columns: auto auto auto auto auto;
+    margin-bottom: 2px;
+}
+
+.operations3{
+    grid-template-columns: auto auto;
+    margin-bottom: 2px;
+}
+
+.operations4{
+    grid-template-columns: auto auto auto auto auto;
+    padding: 2px;
+    gap: 4px 4px;
+}
+
+.itemof1{
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.itemof2{
+    text-transform: uppercase;
+}
+
+.itemof2:nth-child(1), .itemof2:nth-child(2){
+    color: rgb(206, 206, 206);
+}
+
+.itemof3{
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+    position: relative;
+}
+
+/* icons for trigonomentry and function */
+.itemof3 img, .itemof4 img{
+    width: 20px;
+}
+/* drop down arrow */
+.itemof3 svg{
+    transform: rotate(-90deg);
+    transition: .3s;
+}
+
+.itemof3:hover svg{
+    transform: rotate(90deg);
+}
+/* submenu */
+.itemof3 .submenu{
+    position: absolute;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 14px 14px;
+    top: 50px;
+    padding: 10px 20px;
+    background-color: rgb(37, 37, 37);
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 25px 30px;
+    display: none;
+    transition: .5s;
+}
+
+.itemof3:hover .submenu{
+    display: grid;
+}
+
+.itemof3 .submenu .subitem{
+    background-color: rgb(70,70,70);
+    font-size: 14px;
+    border-radius: 3px;
+    text-transform: none;
+}
+
+.itemof4{
+    background-color: rgb(70,70,70);
+    font-size: 17px;
+    border-radius: 3px;
+}
+
+
+.itemof1:hover, .itemof2:hover, .itemof3:hover, .itemof4:hover, .itemof3 .submenu .subitem:hover{
+    background-color: rgb(65,65,65);
+}
+/* select the = button */
+.itemof4:last-child{
+    background-color: rgb(255, 160, 51);
+}
+
+.itemof4:last-child:hover{
+    background-color: rgb(252, 134, 0);
+}
+/* to highligh the main operation */
+.main{
+    background-color: rgb(80,80,80);
+    font-weight: 700;
+}
+/* for clear button */
+.clear{
+    background-color: rgb(64, 179, 224);
+}
+
+.clear:hover{
+    background-color: rgb(26, 168, 224);
+}
+/* backspace button */
+.back{
+    background-color: rgb(227, 66, 52);
+}
+
+.back:hover{
+    background-color: rgb(226, 38, 21);
+}
