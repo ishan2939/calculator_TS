@@ -19,7 +19,19 @@ body{
     width: 25%;
     margin: 50px 30px;
     min-width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 50px;
 }
+.calculatorContainer .title{
+    font-size: 80px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 /* main container */
 .calculator{
     padding: 30px 15px;
@@ -180,8 +192,30 @@ sup{
 /* backspace button */
 .back{
     background-color: rgb(227, 66, 52);
+    background-image: url('../assests/back.png');
 }
 
 .back:hover{
     background-color: rgb(226, 38, 21);
+}
+
+.back, .divide, .multiply, .minus, .plus, .equal{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30%;
+}
+.divide{
+    background-image: url('../assests/division.png');
+}
+.multiply{
+    background-image: url('../assests/multiplication.png');
+}
+.minus{
+    background-image: url('../assests/substraction.png');
+}
+.plus{
+    background-image: url('../assests/plus.png');
+}
+.equal{
+    background-image: url('../assests/equal.png');
 }
