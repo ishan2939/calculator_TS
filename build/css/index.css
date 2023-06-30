@@ -199,7 +199,7 @@ sup{
     background-color: rgb(226, 38, 21);
 }
 
-.back, .divide, .multiply, .minus, .plus, .equal{
+.back, .divide, .multiply, .minus, .plus, .equal, .clear{
     background-repeat: no-repeat;
     background-position: center;
     background-size: 30%;
@@ -207,15 +207,24 @@ sup{
 .divide{
     background-image: url('../assests/division.png');
 }
+
 .multiply{
     background-image: url('../assests/multiplication.png');
 }
+
 .minus{
     background-image: url('../assests/substraction.png');
 }
+
 .plus{
     background-image: url('../assests/plus.png');
 }
+
 .equal{
     background-image: url('../assests/equal.png');
+}
+
+.clear{
+    background-image: url('../assests/clear.png');
+    background-size: 25%;
 }
