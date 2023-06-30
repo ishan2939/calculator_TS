@@ -38,11 +38,11 @@ function display(
 //     // return { inputArr, calcArr }
 // }
 
-function equal(inputArr: strArray, calcArr: strnumberArray): (number | string) {
+function equal(inputArr: strArray, calcArr: strnumberArray): number | string {
   try {
     let temp = calcArr.join("");
     let ans = eval(temp);
-    ans = ans!=undefined?ans:'';
+    ans = ans != undefined ? ans : "";
     return ans;
   } catch {
     alert("Please enter valid expressions only.");
@@ -87,7 +87,7 @@ function sign(inputArr: strArray, calcArr: strnumberArray) {
   }
   console.log(inputArr, calcArr);
 
-  return [ inputArr, calcArr ];
+  return [inputArr, calcArr];
 }
 
 function trigonometry(sign: string, deg: string): number {
@@ -96,9 +96,8 @@ function trigonometry(sign: string, deg: string): number {
 }
 
 document
-  .querySelectorAll(".operations1, .operations2, .operations3, .operations4")
+  .querySelectorAll(".operations1, .operations3, .operations4")
   .forEach((i) => {
-    console.log();
     i.addEventListener("click", (e: any) => {
       e.preventDefault();
       console.log("hello", e.target.id);
@@ -122,6 +121,7 @@ document
 
           case "deg":
             obj = equal(inputValues, calcValues);
+            if (Number.isNaN(obj) || obj == "") return;
             inputValues = [obj];
             calcValues = [obj];
             t = calcValues.join("");
@@ -132,12 +132,14 @@ document
 
           case "fe":
             obj = equal(inputValues, calcValues);
-            inputValues = obj.inputArray;
-            calcValues = obj.calcArray;
-            t = parseFloat(calcValues.join("")).toString();
+            if (Number.isNaN(obj) || obj == "") return;
+            inputValues = [obj];
+            calcValues = [obj];
+            t = calcValues.join("");
             t = parseFloat(t).toExponential();
             calcValues = [t];
             inputValues = [t];
+
             break;
 
           case "ten-pow":
@@ -162,6 +164,11 @@ document
             pushValue("root(", "Math.sqrt(");
             break;
 
+          case "rand": 
+            obj = Math.random()*1000;
+            inputValues = [obj];
+            calcValues = [obj];
+            break;
           case "sin":
             pushValue("sin(", "trigonometry('sin',");
             break;
@@ -192,7 +199,7 @@ document
 
           case "divBy":
             obj = equal(inputValues, calcValues);
-            
+            if (Number.isNaN(obj) || obj == "") return;
             inputValues = [obj];
             calcValues = [obj];
             calcValues = [
@@ -210,8 +217,8 @@ document
             break;
 
           case "equal":
-            let ans:(string | number) = equal(inputValues, calcValues);
-            ans = ans!=undefined?ans:'';
+            let ans: string | number = equal(inputValues, calcValues);
+            ans = ans != undefined ? ans : "";
             inputValues = [ans.toString()];
             calcValues = [ans];
             display(inputValues, calcValues, input);
@@ -232,12 +239,11 @@ document
             break;
         }
       }
-      console.log(inputValues, calcValues);
       display(inputValues, calcValues, input);
     });
   });
 
-document.querySelectorAll(".memory").forEach((i) => {
+document.querySelectorAll(".operations2").forEach((i) => {
   i.addEventListener("click", (e: any) => {
     e.preventDefault();
 
@@ -245,8 +251,10 @@ document.querySelectorAll(".memory").forEach((i) => {
     switch (e.target.id) {
       case "m+":
         obj = equal(inputValues, calcValues);
-        inputValues = obj.inputArr;
-        calcValues = obj.calcArr;
+        console.log("obj", obj )
+        if (Number.isNaN(obj) || obj == "") return;
+        inputValues = [obj];
+        calcValues = [obj];
         if (!calcValues.length) {
           value = 0;
         } else {
@@ -260,8 +268,9 @@ document.querySelectorAll(".memory").forEach((i) => {
 
       case "m-":
         obj = equal(inputValues, calcValues);
-        inputValues = obj.inputArray;
-        calcValues = obj.calcArray;
+        if (Number.isNaN(obj) || obj == "") return;
+        inputValues = [obj];
+        calcValues = [obj];
         if (!calcValues.length) {
           value = 0;
         } else {
@@ -281,6 +290,8 @@ document.querySelectorAll(".memory").forEach((i) => {
       case "mr":
         getMemory();
         try {
+          if(memoryArray.length==0)
+            return;
           let temp: string = memoryArray.join("+");
           temp = eval(temp);
           memoryArray = [parseFloat(temp)];
@@ -296,6 +307,7 @@ document.querySelectorAll(".memory").forEach((i) => {
       default:
         break;
     }
+    console.log("===", inputValues, calcValues, memoryArray);
   });
 });
 
